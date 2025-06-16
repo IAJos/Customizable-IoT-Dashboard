@@ -1,0 +1,96 @@
+{
+  "units": [
+    {
+      "category": "Temperature",
+      "units": ["°C", "°F", "K"]
+    },
+    {
+      "category": "Humidity",
+      "units": ["%RH", "g/m³", "dew point (°C)"]
+    },
+    {
+      "category": "Pressure",
+      "units": ["Pa", "hPa", "kPa", "bar", "atm", "psi", "mmHg", "inHg"]
+    },
+    {
+      "category": "Distance",
+      "units": ["mm", "cm", "m", "in", "ft"]
+    },
+    {
+      "category": "Speed / Velocity",
+      "units": ["m/s", "km/h", "mph", "ft/s", "knots"]
+    },
+    {
+      "category": "Acceleration",
+      "units": ["m/s²", "g"]
+    },
+    {
+      "category": "Light / Luminance",
+      "units": ["lux", "lm", "cd/m²"]
+    },
+    {
+      "category": "Gas concentration",
+      "units": ["ppm", "ppb", "mg/m³", "%vol"]
+    },
+    {
+      "category": "Sound",
+      "units": ["dB", "dBA"]
+    },
+    {
+      "category": "Air Quality Index",
+      "units": ["AQI"]
+    },
+    {
+      "category": "Voltage",
+      "units": ["V", "mV"]
+    },
+    {
+      "category": "Current",
+      "units": ["A", "mA", "µA"]
+    },
+    {
+      "category": "Power",
+      "units": ["W", "kW", "mW"]
+    },
+    {
+      "category": "Energy",
+      "units": ["Wh", "kWh", "J", "cal"]
+    },
+    {
+      "category": "Frequency",
+      "units": ["Hz", "kHz", "MHz"]
+    },
+    {
+      "category": "Rotation / Angle",
+      "units": ["°", "rad", "rpm"]
+    },
+    {
+      "category": "Magnetic Field",
+      "units": ["T", "G", "µT", "mG"]
+    },
+    {
+      "category": "pH / Chemical",
+      "units": ["pH", "mol/L", "µS/cm", "EC"]
+    },
+    {
+      "category": "Flow",
+      "units": ["L/min", "m³/h", "gpm"]
+    },
+    {
+      "category": "Weight / Mass",
+      "units": ["g", "kg", "lb", "oz", "N"]
+    },
+    {
+      "category": "Time",
+      "units": ["s", "ms", "min", "h", "d"]
+    },
+    {
+      "category": "Percentage",
+      "units": ["%"]
+    },
+    {
+      "category": "Boolean / Status",
+      "units": ["true/false", "on/off", "1/0"]
+    }
+  ]
+}

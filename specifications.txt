@@ -1,0 +1,12 @@
+SGBD NoSQL: MongoDB
+FrameWork: Django
+Programing language: Python
+Architecture:
+    API:
+        Créer un capteur et générer un topic mqtt sur lequel on peut publier sa valeur
+        Enregistrer de données dans la base de données
+
+    Frontend
+        Afficher les données des différents capteurs en temps réel et triable par date ou alphabet
+        Pouvoir afficher les données de chaque composant sur un tableau en fonction des dates et pouvoir exporter
+        Souscrire aux topics des différentes données afin de les affichés

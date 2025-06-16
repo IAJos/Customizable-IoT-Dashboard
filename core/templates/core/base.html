@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Mon projet{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'core/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'fontawesome/css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/select2.min.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/toastr.min.css' %}">
+    <link rel="stylesheet" href="{% static 'core/css/style.css' %}">
+</head>
+<body>
+    <div class="d-flex flex-column flex-md-row align-items-center p-3 px-md-4 mb-3 bg-white border-bottom box-shadow">
+          <h5 class="my-0 mr-md-auto font-weight-normal">Dashboard</h5>
+    </div>
+
+    <div class="pricing-header px-3 py-1 pt-md-2 pb-md-4 mx-auto text-center">
+      <h1 class="display-6 fw-semibold">Welcome to dashboard</h1>
+      <p class="lead">For better sensor monitoring.</p>
+    </div>
+
+    <div class="container">
+        {% block content %}{% endblock %}
+    </div>
+    <script src="{% static 'core/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+    <script src="{% static 'core/js/jquery-3.6.0.min.js' %}"></script>
+    <script src="{% static 'core/js/toastr.min.js' %}"></script>
+    <script src="{% static 'core/js/select2.min.js' %}"></script>
+    <script src="{% static 'core/js/chart.js' %}"></script>
+    <script src="{% static 'core/js/mqtt.min.js' %}"></script>
+    <script src="{% static 'core/js/style.js' %}"></script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+.idea/
+.venv/
+.env/
+env/
+venv/
+
+
+# Fichiers de configuration et secrets
+*.env
+*.local
+*.secret
+.env.*
+
+# Fichiers Python compilés
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Fichiers de logs
+*.log
+
+# Fichiers de base de données SQLite (local)
+*.sqlite3
+db.sqlite3
+
+# Dossiers Django
+/staticfiles/
+/media/
+
+# Fichiers générés par Django
+*.pot
+*.pyc
+*.pyo
+*.mo
+
+# VS Code / PyCharm
+.vscode/
+.idea/
+
+# Système d'exploitation
+.DS_Store
+Thumbs.db
+
+# Migrations si tu ne veux pas les suivre au début (optionnel)
+# core/migrations/
+# */migrations/
+
+# Fichiers coverage / tests
+htmlcov/
+.coverage
+.tox/
+.nox/
+.cache/
+coverage.xml
+*.cover
+*.py,cover
+
+# Pipenv / Poetry (si utilisés)
+Pipfile.lock
+poetry.lock
+
+# Node (si frontend)
+node_modules/
+package-lock.json
+yarn.lock
+
+# Output de build
+dist/
+build/

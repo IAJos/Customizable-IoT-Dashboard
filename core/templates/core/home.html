@@ -1,0 +1,168 @@
+{% extends 'core/base.html' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block content %}
+    <div class="row g-4 pb-5">
+        <div class="col-md-12 text-center">
+            <button type="button" class="btn btn-outline-primary" data-bs-toggle="modal" id="addButtonModalSensor">Add sensor</button>
+        </div>
+        <div class="col-md-10">
+            <div class="form-group pull-right">
+                <div class="input-group">
+                    <input type="search" class="form-control" id="searchInput" placeholder="Rechercher...">
+                </div>
+            </div>
+        </div>
+        <div class="col-md-2">
+            <button type="button" class="btn btn-primary w-100" id="searchButtonSensor">Search</button>
+        </div>
+    </div>
+    <div id="error-message" class="alert alert-danger mt-4 text-center d-none" role="alert">
+      <strong>An error has occurred.</strong><br>
+      <span class="error-text">Please try again later.<br>
+      If the problem persists, contact the administrator.</span><br>
+      <button id="retry-button" class="btn btn-sm btn-outline-light mt-2">Home</button>
+    </div>
+    <div class="row g-4 pb-4" id="sensorList">
+    </div>
+
+    <!-- Modal add and edit -->
+    <div class="modal fade" id="addSensorModal" tabindex="-1" aria-labelledby="addSensorModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="addSensorModalLabel">Adding a sensor</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <form action="/sensor/add" method="post" id="formSensor">
+                {% csrf_token %}
+                <div class="mb-3">
+                    <label for="titleInput" class="form-label">Title :</label>
+                    <input type="text" name="title" class="form-control form-control-sm" id="titleInput" placeholder="Enter title" required>
+                    <div class="invalid-feedback"></div>
+                </div>
+                <div class="mb-3">
+                    <label for="topicInput" class="form-label">Topic :</label>
+                    <input type="text" name="topic" class="form-control form-control-sm" placeholder="Enter topic" id="topicInput" required>
+                    <div class="invalid-feedback"></div>
+                </div>
+                <div class="mb-3">
+                    <label for="iconSelect" class="form-label">Icon :</label>
+                    <select id="iconSelect" class="form-select form-control form-control-sm" name="icon" style="width: 100%" required>
+                      <option value="">-- Choose an icon --</option>
+                    </select>
+                    <div class="invalid-feedback"></div>
+                </div>
+                <div class="mb-3">
+                    <label for="color" class="form-label mt-3">Icon color :</label>
+                    <input type="color" id="iconColor" name="color" class="form-control form-control-sm form-control-color" value="#000000" required>
+                    <div class="invalid-feedback"></div>
+                </div>
+                <div class="mb-3">
+                    <label for="unitInput" class="form-label">Unité de mesure :</label>
+                    <input type="text" name="unit" class="form-control form-control-sm" placeholder="Enter unit" id="unitInput" required>
+                    <div class="invalid-feedback"></div>
+                </div>
+                <div class="mb-3">
+                    <label for="descriptionTextarea" class="form-label">Description :</label>
+                    <textarea name="description" class="form-control form-control-sm" rows="3" id="descriptionTextarea" placeholder="Enter description"></textarea>
+                </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+              <button class="btn btn-primary" type="button" id="addButtonSensor">
+                  <span class="spinner-border spinner-border-sm visually-hidden" aria-hidden="true"></span>
+                  <span role="status" class="textB">Add</span>
+              </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal delete -->
+    <div class="modal fade" id="deleteSensorModal" tabindex="-1" aria-labelledby="deleteSensorModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="deleteSensorModalLabel">Deleting a sensor</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <span class="fw-bold">Name :</span> <span id="titleSensorDelete"></span>
+              <div>Are you sure you want to delete this sensor ?</div>
+          </div>
+          <div class="modal-footer">
+              <button class="btn btn-danger" type="button" id="deleteButtonSensor">
+                  <span class="spinner-border spinner-border-sm visually-hidden" aria-hidden="true"></span>
+                  <span role="status" class="textB">Delete</span>
+              </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Modal details -->
+    <div class="modal fade modal-xl" id="detailSensorModal" tabindex="-1" aria-labelledby="detailSensorModalLabel" aria-hidden="true">
+      <div class="modal-dialog">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="detailSensorModalLabel">Details sensor</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+              <div class="container">
+                  <div class="row">
+                      <div class="col-md-4 col-sm-12 text-center p-2">
+                        <h4 class="fw-bold pb-4">Informations</h4>
+                          <p class="fw-semibold" id="titleSensorDetail" title=""></p>
+                          <p><span class="display-6" id="valueSensorDetail">- </span> <span class="display-6" id="unitSensorDetail"></span></p>
+                          <i class="" id="iconSensorDetail"></i>
+                          <div class="pt-4">
+                              <p class="" ><span class="fw-semibold fs">Description:</span> <span id="descriptionSensorDetail"></span></p>
+                              <p class="" ><span class="fw-semibold fs">Topic:</span> <span id="topicSensorDetail"></span></p>
+                          </div>
+                      </div>
+                      <div class="col-md-8 col-sm-12 p-2">
+                          <div class="row">
+                              <div class="col-12 text-center">
+                                  <h4 class="fw-bold pb-4">Chart</h4>
+                              </div>
+                              <div class="col-4">
+                                  <div class="form-group">
+                                    <label for="startDatetime" class="fs13">Date de début :</label>
+                                    <input type="datetime-local" class="form-control form-control-sm" id="startDatetime">
+                                  </div>
+                              </div>
+                              <div class="col-4">
+                                  <div class="form-group">
+                                    <label for="endDatetime" class="fs13">Date de fin :</label>
+                                    <input type="datetime-local" class="form-control form-control-sm" id="endDatetime">
+                                  </div>
+                              </div>
+                              <div class="col-4 text-center d-flex flex-column">
+                                  <button type="button" class="btn btn-primary btn-sm mt-auto" id="searchDataGraphSensor">Submit</button>
+                              </div>
+                              <div class="col-12 pt-5">
+                                  <div class="text-center" id="loaderChart">
+                                    <div class="spinner-border text-primary p-5" role="status" style="width: 5rem; height: 5rem;">
+                                        <span class="visually-hidden">Loading...</span>
+                                    </div>
+                                  </div>
+                                  <canvas id="myChart" class="d-none" width="400" height="200"></canvas>
+                              </div>
+                          </div>
+
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="modal-footer">
+
+          </div>
+        </div>
+      </div>
+    </div>
+
+{% endblock %}
