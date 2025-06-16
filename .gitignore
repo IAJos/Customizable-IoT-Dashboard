@@ -1,69 +1,68 @@
-.idea/
-.venv/
-.env/
-env/
-venv/
-
-
-# Fichiers de configuration et secrets
-*.env
-*.local
-*.secret
-.env.*
-
-# Fichiers Python compilés
+# Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
 
-# Fichiers de logs
-*.log
 
-# Fichiers de base de données SQLite (local)
-*.sqlite3
-db.sqlite3
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+pip-wheel-metadata/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
 
-# Dossiers Django
-/staticfiles/
-/media/
+# PyInstaller
+#  Usually these files are written by a python script from a template
+#  before PyInstaller builds the exe, so as to inject date/other infos into it.
+*.manifest
+*.spec
 
-# Fichiers générés par Django
-*.pot
-*.pyc
-*.pyo
-*.mo
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
 
-# VS Code / PyCharm
-.vscode/
-.idea/
-
-# Système d'exploitation
-.DS_Store
-Thumbs.db
-
-# Migrations si tu ne veux pas les suivre au début (optionnel)
-# core/migrations/
-# */migrations/
-
-# Fichiers coverage / tests
+# Unit test / coverage reports
 htmlcov/
-.coverage
 .tox/
 .nox/
-.cache/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
 coverage.xml
 *.cover
 *.py,cover
+.hypothesis/
+.pytest_cache/
 
-# Pipenv / Poetry (si utilisés)
-Pipfile.lock
-poetry.lock
+# Django stuff:
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
 
-# Node (si frontend)
-node_modules/
-package-lock.json
-yarn.lock
+# PEP 582; used by e.g. github.com/David-OConnor/pyflow
+__pypackages__/
 
-# Output de build
-dist/
-build/
+# Environments
+.env
+.venv
+env/
+venv/
+ENV/
+env.bak/
+venv.bak/
